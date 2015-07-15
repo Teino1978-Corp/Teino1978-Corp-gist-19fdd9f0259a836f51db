@@ -1,3 +1,5 @@
+// Thanks to this site to help out on RegEx - http://www.regexr.com/
+
     require(["jQueryValidate"], function(){
 
         // dont allow < > # \ /
