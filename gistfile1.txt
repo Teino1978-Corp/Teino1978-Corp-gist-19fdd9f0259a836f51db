@@ -1,0 +1,57 @@
+    require(["jQueryValidate"], function(){
+
+        // dont allow < > # \ /
+
+        // add alphanumeric validator
+        jQuery.validator.addMethod("noSpecialCharacter", function(value, element) {
+            var regex = new RegExp("[<>#]+");
+            var key = value;
+
+            if (regex.test(key)) {
+               return false;
+            }
+            return true;
+        }, "please do not use the characters: < > #");
+
+        //login box
+        $('.loginBox form').validate({});
+
+        //advanced search
+        if (has('.advanced-search')) {
+            $('.advanced-search').validate({
+
+                rules: {
+                    text: {
+                        noSpecialCharacter: true
+                    }
+                }
+
+            });
+        }
+
+        // feedback
+        $('.standard-validation').validate({
+
+        });
+
+        //register
+        if (has('#registration-form')) {
+            $('#registration-form').validate({
+
+            });
+        }
+
+        // site search
+        $('.search-validation form').each(function(){
+
+            $(this).validate({
+                rules: {
+                    text: {
+                        noSpecialCharacter: true
+                    }
+                }
+            });
+
+        });
+
+    });
